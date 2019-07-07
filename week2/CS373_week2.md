@@ -85,7 +85,10 @@ System Restore Points
 Data Recovery/Data Carving-
 Deleted files remain on disk until they are overwritten.  This data can be recovered via a special program which scans the disk for file header and footers.  The header identifies the start of the file and the type of the file.
 
-##Thoughts and Reflections
+
+
+##Thoughts and Reflections ##
+
 I found that there were a lot of similarities between the lab and challenge component of week 2 and the assignment of week 1.  Week 1 covered malware analysis, which involves allowing malware to run in an isolated environment, and watching the actions taken by the malware.  Week 2 covered forensics, which is more for examining an already infected machine.  The forensics toolkit is a bit different, and involves copying memory and examining logs to build a historical timeline of events.  Interpreting the timeline of events seemed similar to examining the real-time actions of dynamic analysis, because it similarly involves looking at processes, network activity, and other system logs.
 
 
