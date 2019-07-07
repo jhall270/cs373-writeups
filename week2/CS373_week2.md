@@ -34,7 +34,7 @@ The order of volatility - information which is more volatile, should be collecte
  Memory dumps can show almost all activities which are occuring.  It is one of the most useful analysis techniques because it has so much valuable information.
  
 ##### Volatility -
- This runs from the command line. It is easiest to put the .exe file and the memory dump file in the same folder.  Then run volatility on the memory dump with some plugin option. These are some plugins which I ran:
+ *This runs from the command line. It is easiest to put the .exe file and the memory dump file in the same folder.  Then run volatility on the memory dump with some plugin option. These are some plugins which I ran:
  
  imageinfo
  This is useful for identifying the profile.  In this case Win7SP0x86
@@ -43,30 +43,30 @@ The order of volatility - information which is more volatile, should be collecte
  ![Image](volatility_imageinfo.PNG "imageinfo")
  
  psscan
--this lists the processes which were running on the system 
+*this lists the processes which were running on the system 
   
  ![Image](volatility_psscan.PNG "psscan")
  
  dlllist <pid>
- this displays the dlls called by a particular process identifying
+ *this displays the dlls called by a particular process identifying
   
  ![Image](volatility_dlllist.PNG "dlllist")
  
  netscan
- this displays network activity
+ *this displays network activity
  
  deskscan
- shows the different desktops which the processes are assigned to
+ *shows the different desktops which the processes are assigned to
  
  getsids
- displays which user rights the processes are running under
+ *displays which user rights the processes are running under
  
  
  timeliner --output=body
- creates a timeline of events including processes and network activity
+ *creates a timeline of events including processes and network activity
  
  mftparser --output=body
- outputs master file table $MFT
+ *outputs master file table $MFT
  
 ##### Windows Registry
 Hierarchical database storing configuration data for users, devices, and more.  It contains tons of information and timestamps recording what was accessed, by whom, and when.
