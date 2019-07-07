@@ -1,4 +1,4 @@
-##Summary of Week 2 Content
+## Summary of Week 2 Content
 
 ### Forensics
 Forensics involves collecting evidence.  The job of the forensics investigator is to determine what happened on the machine.  It has typically involved examining machines collected from locations, but recently 'live forensics' or the examination of the working machine in place has become more common.  Live forensics enable the researcher to do a memory dump and analyze what is happening in memory.  This would not be possible if a machine was shut down and transported for analysis.
@@ -43,30 +43,30 @@ The order of volatility - information which is more volatile, should be collecte
  ![Image](volatility_imageinfo.PNG "imageinfo")
  
  psscan
-*this lists the processes which were running on the system 
+* this lists the processes which were running on the system 
   
  ![Image](volatility_psscan.PNG "psscan")
  
  dlllist <pid>
- *this displays the dlls called by a particular process identifying
+ * this displays the dlls called by a particular process identifying
   
  ![Image](volatility_dlllist.PNG "dlllist")
  
  netscan
- *this displays network activity
+ * this displays network activity
  
  deskscan
- *shows the different desktops which the processes are assigned to
+ * shows the different desktops which the processes are assigned to
  
  getsids
- *displays which user rights the processes are running under
+ * displays which user rights the processes are running under
  
  
  timeliner --output=body
- *creates a timeline of events including processes and network activity
+ * creates a timeline of events including processes and network activity
  
  mftparser --output=body
- *outputs master file table $MFT
+ * outputs master file table $MFT
  
 ##### Windows Registry
 Hierarchical database storing configuration data for users, devices, and more.  It contains tons of information and timestamps recording what was accessed, by whom, and when.
@@ -87,7 +87,7 @@ Deleted files remain on disk until they are overwritten.  This data can be recov
 
 
 
-##Thoughts and Reflections ##
+## Thoughts and Reflections
 
 I found that there were a lot of similarities between the lab and challenge component of week 2 and the assignment of week 1.  Week 1 covered malware analysis, which involves allowing malware to run in an isolated environment, and watching the actions taken by the malware.  Week 2 covered forensics, which is more for examining an already infected machine.  The forensics toolkit is a bit different, and involves copying memory and examining logs to build a historical timeline of events.  Interpreting the timeline of events seemed similar to examining the real-time actions of dynamic analysis, because it similarly involves looking at processes, network activity, and other system logs.
 
