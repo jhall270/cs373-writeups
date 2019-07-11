@@ -89,5 +89,38 @@ After reviewing the lab2 debrief, I realized that my yara signature, while seemi
 
 
 
+## Final Lab
+
+I started by examining the file strings for all four files in FileInsight.  
+
+File 068D5 appears to try to display a fake form with a number of error messages to the user and includes multiple suspicious urls.  
+
+File 00670F, similarly appears to try to download suspicious files from the internet, and tries to run suspicious executable files.
+
+The file starting with 4844FD appears to be a valid file. It contains a detailed description of what the file is intended to be along with copyright information.  When run, the file appears to take the actions described in the program description.
+
+File A1874F is more highly packed and so the information available from examining the strings is limited.  Further dynamic analysis showed that this file was malware.
+
+In summary, files 068D5, 00670F, and A1874F are malware.  File 4844FD is valid.
+
+
+
+### Blog Post:
+
+
+The malware was packed and this limited static analysis.  I analyzed it by running with Cuckoo.
+
+Cuckoo logs showed that it created a Deleteme.bat file in the \Appdata\Local\Temp directory.
+blog1.png
+
+I examined the files in this directory and found the malware had created an image file.  The image file appears to be a login form with Chinese text
+blog2.png
+
+There was also a ntshruis2.dll file created in the temp directory.  Examining this file in fileinsight showed that it was attempting to make a number of calls over the internet and many of the urls had words like ‘pay’ in them.
+blog3.png
+
+Based on the evidence collected, I believe that this malware may be designed to steal login information usign the fake login form and then possibly conduct some nefarious payment activity over the internet.
+
+
 
 
