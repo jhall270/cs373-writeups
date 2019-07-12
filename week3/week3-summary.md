@@ -111,10 +111,10 @@ In summary, files 068D5, 00670F, and A1874F are malware.  File 4844FD is valid.
 The malware was packed and this limited static analysis.  I analyzed it by running with Cuckoo.
 
 Cuckoo logs showed that it created a Deleteme.bat file in the \Appdata\Local\Temp directory.
-![blog1](blog1.png)
+![blog1](blog1.PNG)
 
 I examined the files in this directory and found the malware had created an image file.  The image file appears to be a login form with Chinese text
-![blog2](blog2.png)
+![blog2](blog2.PNG)
 
 There was also a ntshruis2.dll file created in the temp directory.  Examining this file in fileinsight showed that it was attempting to make a number of calls over the internet and many of the urls had words like ‘pay’ in them.
 ![blog3](blog3.png)
