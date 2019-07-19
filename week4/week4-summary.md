@@ -6,31 +6,45 @@ This week was focused on software exploits.  To examine the behavior of several 
 ## WinDbg
 
 #### Basic memory commands
-`lm` lists modules
-`lmf` finds a module
-`bp` breakpoint
-`bl` breakpoint list
-`dd` displays a dword of memory
-`u` unassembles memory
 
+`lm` lists modules
+
+`lmf` finds a module
+
+`bp` breakpoint
+
+`bl` breakpoint list
+
+`dd` displays a dword of memory
+
+`u` unassembles memory
 
 `.hh` help
 
 `.formats`
+
 `dv` shows local variables
+
 `db` shows bytes and ascii string representation 
+
 `da <value>` show ascii string
+
 `du` unicode strings
 
 `t` step into
+
 `p` step over
+
 `g <address>` goes to address
 
 `!teb` stack
+
 `!peb` heap
+
 `!address`
 
 `k` shows stack
+
 
 ### Exploits
 
@@ -70,10 +84,10 @@ Running ` !heap -p -a ` on this memory address then will display the allocation 
 Now that the size of the memory allocation is known, the replacement block of memory can be written to point to the shell code.
 
 I created a replacement block string to fill the memory
-![alt text](https://snip5.png "Snip5")
+![alt text](./snip5.png "Snip5")
 
 And enabled the low fragmentation heap by allocating 18 objects of a small size.
-![alt text](https://snip6.png "Snip6")
+![alt text](./snip6.png "Snip6")
 
 I then uncommented out the provided sections of the code and relaunched the program.
 
