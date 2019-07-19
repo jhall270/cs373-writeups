@@ -51,19 +51,19 @@ Lab 1 was a walthrough of using WinDbg to examine a running process, set a break
 
 Lab 3 showed a Use-After-Free vulnerability which exploited the stack.  I attached the IE process to WinDbg and triggered the crash.
 
-![alt text](https://snip1.png "Snip1")
+![alt text](./snip1.png "Snip1")
 
 This showed that eax was pointing to heap memory.  The ` !heap -p -a eax ` commmand then showed the stack trace associated with this memory address.
 
-![alt text](https://snip2.png "Snip2")
+![alt text](./snip2.png "Snip2")
 
 We need to figure out the size of the allocation, but the block is free at this point, so by examining the function that previously allocated this memory and examining the associated disassembly, we can identify a breakpoint.  
 
-![alt text](https://snip3.png "Snip3")
+![alt text](./snip3.png "Snip3")
 
 After setting the breakpoint and rerunning the program, at the breakpoint the heap memory address is the third parameter of the function call, so it is the third item in the stack.  By printing the stack, we can see the heap memory address.
 
-![alt text](https://snip4.png "Snip4")
+![alt text](./snip4.png "Snip4")
 
 Running ` !heap -p -a ` on this memory address then will display the allocation size.
 
