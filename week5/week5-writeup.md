@@ -1,3 +1,7 @@
+### Week 5
+
+Week 5 was about Windows fundamentals from the perspective of rootkits and bootkits which act at a low level on the operating system.  The labs involved examining the rootkit malware samples which would alter memory of other processes to hide their actions.
+
 
 
 ### Agony Lab
