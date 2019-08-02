@@ -66,3 +66,60 @@ This solved the challenge
 #### Thoughts about the Unity Challenge
 
 The biggest difficulty for me with the Unity challenge was just figuring out the correct tool to use.  The file that I had to decode was relatively small and so there was a fairly small set of possibilities that I needed to check out.  After completing the invite challenge, I felt more comfortable dealing with encodings and knowing that there were many tools available which could decode characters easily.  When I started the challenge, I quickly knew that trying to see the hex values would be a good first step, but finding the correct tool to do this easily took me a lot of time. There didn't seem to be many GUI hex editors for linux and I tried a command line hex editor which was difficult to use as a beginner.  Once I figured out that I could use Burp Suite, I found the flag token quickly.
+
+
+## Lernaean Challenge
+#### Category: Web
+#### Points: 20
+
+![alt text](./lernaean0.png "lernaean0")
+
+The lernaean challenge had a password login webpage and I had to crack the password for the webpage.  To accomplish this I first tried to use the web password cracking tool hydra, which was a default tool installed in my Kali Linux VM.  It seems like the hydra tool is capable of doing multiple types of network password cracking but I was specifically interested in http website forms because the webpage appeared to use a html form request to pass the password to the server.
+
+I used the firefox inspection tools to check the post request and saw that the post parameter was named 'password'.
+
+![alt text](./lernaean1.png "lernaean1")
+
+
+I found some documentation online and looked at some examples of the command parameters to use.  I called the hydra program with parameter options which used the password list rockyou.txt.  Kali linux has a directory of various password lists in a shared folder and this was one of the lists that people online seemed to recommend using.  I specified in the parameters to use this list as the request body paramter 'password' and I indicated that a failed login would have the string 'Invalid' in the html.  I knew this was the case because when I tried to login previously it displayed an 'Invalid password' message.
+
+![alt text](./lernaean2.png "lernaean2")
+
+
+It took multiple attempts to get this to run as there were initial problems in the syntax.  When I finally got it to run correctly it displayed a successful password match of 'leonardo'.  
+
+![alt text](./lernaean3.png "lernaean3")
+
+When I tried to log in using the webpage and this password, it did not seem to work.  I got this page displayed that I was "too slow".
+
+![alt text](./lernaean4.png "lernaean4")
+
+I didn't really know what to do at this point.  I thought at first that there might be some time limit, so I tried restarting the challenge and using hydra again and logging in again more quickly.  But this resulted in the same issue.
+
+I seemed stuck at this point, so I checked the HackTheBox forum for some hints.  People suggested intercepting the response using Burp Suite.  I had not used this tool for this purpose previously, but I found a youtube video demonstrating how to set up the configuration.  I had to change the settings in firefox to use a specific port on localhost as a fixed proxy for incoming and outgoing network requests and responses.
+
+![alt text](./lernaean5.png "lernaean5")
+
+Then I opened up Burp Suite and used the "proxy" tab.  This would intercept the request or response before reaching the browser and I could view it or forward it on to its destination.
+
+![alt text](./lernaean6.png "lernaean6")
+
+The response packet below showed the HTB solution flag in the html in a h1 tag with the color altered so it wouldn't show on the page.
+
+![alt text](./lernaean7.png "lernaean7")
+
+This was in the html, so I think I could have spotted this by inspecting the page in firefox as well, and intercepting the page with Burp wasn't necessary.  Anyway, this HTB flag solved the challenge.
+
+![alt text](./lernaean8.png "lernaean8")
+
+#### Thoughts about the Lernaean Challenge
+
+Before on starting on the Lernaean challenge, I attempted another challenge which involved using a password cracker.  That forced me to spend some time figuring out how these tools work.  In the previous challenge I was trying to crack the password for a zip file and I was using a tool called John the Ripper which was installed on my Kali VM. From what I have been able to tell, these tools work either via a brute-force string generation process or by using a list of commonly used passwords.  The brute-force method of trying out permutations of random characters appears to take a long time, so people generally attempt to use the password lists at least for the first attempts.  Kali Linux comes with some of these lists by default and there are additional ones available on the internet.  There also seems to be lists of password hashes which can be used in a similar way.  I haven't used the hashes personally, but my understanding is that they are different cryptographic hashes of password lists.  In the real world, passwords would be stored in a hashed form and using the lists of pre-hashed passwords would let you crack the decoded form of these hashed passwords.
+
+It took me some time to fiddle with these password cracking tools in order to get them to work, but once I figured it out it was fairly easy and they were able to crack the password in the Lernaean challenge very quickly.  I was actually surprised how easy it was to crack a password.  This particular password was relatively simple and did not have the complexity of special characters and numbers as many systems require, but still I was suprised it could be cracked within 30 seconds on a low performance laptop.
+
+In addition to the password cracker, I ended up learning how to intercept network packages using Burp Suite for this lab. It seems like a useful tool.  The network request intecepting kind of reminds me of using WireShark to examine network traffic, except it actually stops the request mid-transit and lets you inspect what is going on before it is delivered to the destination.
+
+Overall, this challenge was somewhat enjoyable and I felt like I learned a bit more about commonly used security tools.
+
+
