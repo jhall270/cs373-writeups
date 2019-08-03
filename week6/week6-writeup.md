@@ -1,7 +1,14 @@
 ## Week 6, Network Security
 
+One part of making a network secure is the overall architecture.  The design and the machines included in the network architecture can make the network more resistant to attacks or at least provide a series of barriers that the attacker needs to overcome.  By having multiple layers of security, the attacker will be slowed down and if you are monitoring activity in the network, then you may be able to detect the attacker before any data is stolen.
 
+Networks generally have a DMZ that is the zone which is in contact with the internet.  There would be firewalls on both sides of the DMZ, so the attacker would need to penetrate two layers of security to get to the internal network.  Business critical data would be protected behind another layer of security.
 
+Firewalls provide security through a whitelist approach.  These whitelists would specifically enable certain types of traffic and would drop all other traffic.  Developing the whitelists requires understanding the details of the network's users and machines so that all the valid traffic can be identified and whitelisted.
+
+IPS machines provide intrusion detection via signature based matching.  These types of machines examine network traffic for packets which match known malware signatures in a way similar to AV software.  These are commonly used in addition to firewalls as barriers to network security zones.
+
+There are a number of different attacks which involve networks.  A man-in-the-middle attack would involve an attacker intercepting and reading or altering traffic.  A DOS attack involves massive amounts of simultaneous requests to shut down a network service.
 
 
 
