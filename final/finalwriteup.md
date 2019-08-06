@@ -27,6 +27,7 @@ I tried the decoder website again and went through the available decoding scheme
 ![alt text](./snip6.png "Snip6")
 
 
+## Challenge 1
 ## Unity Challenge
 #### Category: Stego
 #### Points: 20
@@ -68,6 +69,7 @@ This solved the challenge
 The biggest difficulty for me with the Unity challenge was just figuring out the correct tool to use.  The file that I had to decode was relatively small and so there was a fairly small set of possibilities that I needed to check out.  After completing the invite challenge, I felt more comfortable dealing with encodings and knowing that there were many tools available which could decode characters easily.  When I started the challenge, I quickly knew that trying to see the hex values would be a good first step, but finding the correct tool to do this easily took me a lot of time. There didn't seem to be many GUI hex editors for linux and I tried a command line hex editor which was difficult to use as a beginner.  Once I figured out that I could use Burp Suite, I found the flag token quickly.
 
 
+## Challenge 2
 ## Lernaean Challenge
 #### Category: Web
 #### Points: 20
@@ -122,4 +124,39 @@ In addition to the password cracker, I ended up learning how to intercept networ
 
 Overall, this challenge was somewhat enjoyable and I felt like I learned a bit more about commonly used security tools.
 
+## Challenge 3
+## Emdee Five for Life
+#### Category: Web
+#### Points: 20
+
+![alt text](./emdee0.png "emdee0")
+
+This challenge starts with a clue about encrypting fast enough.  When I opened up the link it displays a string that I need to encrypt and a form to submit the encrypted result.  I used the firefox tools to inspect the elements in the page.  There was no client side scripting, it was only html and it was using a standard html form to post the result to the same route.  I found a website that would encrypt the string using md5 and pasted the result into the form.  The result was a message that I was too slow.
+
+![alt text](./emdee1.png "emdee1")
+
+I inspected this response and there was nothing unusual.  The post route had sent the inputted string as a parameter with the key of 'hash'.  The response was html with no client side javascript.  I repeated this several more times to see if I could complete the task faster, but I always ended up with the same result.
+
+I had used Burp Suite to intercept web traffic in a previous challenge, so I tried to use it again.  I changed the firefox settings to use a static localhost proxy so that BurpSuite would intercept the requests an responses.  This ended up providing me no more information than I had already seen in by inspecting the traffic in firefox.
+
+At this point I was unsure what to do next, so I checked the HacktheBox forum and the hints suggested that I needed to script the process in order to encode the string and send the response in a quick enough time.  I started looking at python's request library and built up an initial script using the request library to make the get and post request and using the lxml library to parse the html in the get response..
+
+![alt text](./emdee4.png "emdee4")
+
+The script sends a GET request, parses the html response and retrieves the string to be encoded which is inside an h3 tag.  It then uses hashlib to encode the string and sends the post request with the encoded string.  The result didn't seem to be working.  It still was saying "too slow".  I went back and spent some more time looking at the request library and eventually realized that I probably needed to use the sessions class from the library.  The website was changing the string each time I reloaded it, so it must have been maintaining some state information in order to know if the encoded string was correct.  I think using the session class instead of a plain request would keep a cookie attached to my requests.
+
+I made this change to the code and it still was not working.  I eventually figured out that I was not calling the correct md5 encoding methods correctly.  I needed to convert the initial string to unicode first.
+
+![alt text](./emdee5.png "emdee5")
+
+With these changes made I finally got a result with the token.
+
+![alt text](./emdee6.png "emdee6")
+
+This solved the challenge
+
+![alt text](./emdee7.png "emdee7")
+
+
+#### Thoughts about the Lernaean Challenge
 
