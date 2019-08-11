@@ -48,10 +48,16 @@ There's a number of attack surfaces within the browser.
 
 ### Web Goat
 
-With the web goat lab I was able to try out some XSS attacks.
+With the web goat lab I was able to try out some XSS attacks.  In this portion I completed a static XSS attack.  The site was vulnerable because it acceptable multiple string fields in a form to update information on users.  I created a script string and then tried to add this to multiple different form fields.
 ![alt text](./goatlab1.png "g1")
 
+One field allowed me to save this script so that when I tried to view the record the script executed in the browser.
+
 ![alt text](./goatlab2.png "g2")
+
+My script only used an alert, but a malicious actor would be able to use the same technique to steal other user's data or other bad acts.
+
+
 
 ### URL Classification
 
@@ -90,7 +96,11 @@ The second portion of Week 7 discussed attributes which could be used to predict
 
 
 
+### Thoughts and Conclusions
 
+I enjoyed this week's materials. I have a better understanding of databases and web dev than low-level stuff, so this week's materials made more sense to me then previous weeks.  I am also simultaneously working on some web attacks for the final project and I have been using Burp Suite as a proxy for that project.  
+
+What I have learned overall about web security is that any sort of input -- url queries, form text inputs or others -- could potientially be an attack vector that the developer needs to defend against.  The developer needs to filter and cleanse all incoming input and handle errors in a safe way.  It is difficult to develop web apps that have this level of protection, but web attacks are so easy to do, that it is necessary to do the extra engineering that is required.
 
 
 
