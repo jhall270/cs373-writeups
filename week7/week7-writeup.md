@@ -49,8 +49,9 @@ There's a number of attack surfaces within the browser.
 ### Web Goat
 
 With the web goat lab I was able to try out some XSS attacks.
+![alt text](./goatlab1.png "g1")
 
-
+![alt text](./goatlab2.png "g2")
 
 ### URL Classification
 
