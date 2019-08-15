@@ -35,7 +35,7 @@ I tried the decoder website again and went through the available decoding scheme
 
 ![alt text](./unity1.png "unity1")
 
-The Unity challenge gave me a text file with several encoded strings inside.  I needed to find an encoded flage token inside this file.
+The Unity challenge gave me a text file with several encoded strings inside.  I needed to find an encoded flag token inside this file.
 
 This was my first challenge and I before I began, I set up an environment for my Hack the Box work.  I created a Kali Linux VM that I ran on my windows laptop in Hyper-V because this seemed to be recommended in the HTB forums and it came with a number of security tools built-in.
 
@@ -62,6 +62,7 @@ The characters when decoded and represented in ascii showed a HTB{} pattern in t
 It looked like this was the flag token but with the @ character in between each valid character, so I created a string by removing the @ characters.
 
 This solved the challenge
+
 ![alt text](./unity6.png "unity6")
 
 #### Thoughts about the Unity Challenge
@@ -84,9 +85,6 @@ I used the firefox inspection tools to check the post request and saw that the p
 
 
 I found some documentation online and looked at some examples of the command parameters to use.  I called the hydra program with parameter options which used the password list rockyou.txt.  Kali linux has a directory of various password lists in a shared folder and this was one of the lists that people online seemed to recommend using.  I specified in the parameters to use this list as the request body paramter 'password' and I indicated that a failed login would have the string 'Invalid' in the html.  I knew this was the case because when I tried to login previously it displayed an 'Invalid password' message.
-
-![alt text](./lernaean2.png "lernaean2")
-
 
 It took multiple attempts to get this to run as there were initial problems in the syntax.  When I finally got it to run correctly it displayed a successful password match of 'leonardo'.  
 
@@ -160,3 +158,9 @@ This solved the challenge
 
 #### Thoughts about the Lernaean Challenge
 
+This challenge turned out to mostly involve scripting.  I am a novice at python, so I found it a useful exercise to practice my python programming and use some python libraries that I had not used before.  Overall, I'm not sure how much of a realistic hacking challenge it actually was.  I am not aware of any sort of website vulnerabilities that can be exploited by sending a response very quickly.  On the other hand, there are security concepts like website fuzzing which involve scripting requests to websites, so that many requests can be made in an automated manner.  Maybe this was the purpose this challenge was teaching.
+
+
+#### Concluding Thoughts about Hack the Box
+
+I found this final project to be very challenging at first.  These challenges have a particular style to them where the beginnner ones are not necessarily realistic exploits, but meant to be fun little puzzles that force the person to learn a new tool or skill.  I think that I was able to learn several useful tools.  I think these challenges also presented topics which were different than presented by the McAffee folks in the lectures.  My first instict when doing the HTB challenges was to try to use a tool or technique from the class, but I ultimately found it more useful to find other tools and techniques.  This is probably because the field of computer security is so large and changes so rapidly that there is a lot more out there to learn in addition to the lecture materials.
